@@ -61,6 +61,7 @@ if (is_dir($dir)) {
 
                     if(!$mail->send()) {
                         echo " -> KO !!\n";
+                        echo $mail->ErrorInfo."\n";
                     } else {
                         echo " -> ok\n";
                     }
