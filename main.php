@@ -41,17 +41,10 @@ $mail->SMTPKeepAlive = true;
 $mail->setFrom($configSmtp['Username'], 'Secretariat COP Rink-Hockey');
 $mail->Subject = 'Rink-Hockey/Roller - Saison 2017-2018 : dossier d\'inscription et informations tarifs et horaires';
 
-$idx=0; 
-
 // Ouvre un dossier bien connu, et liste tous les fichiers
 if (is_dir($dir)) {
     if ($dh = opendir($dir)) {
         while (($file = readdir($dh)) !== false) {
-$idx++;
-if ($idx == 10) {
-	$mail->SmtpClose();
-     die();
-}
             if (strpos($file, "pdf") !== false) {
                 $attachFile = __DIR__ . '/' . $dir . "/" . $file;
                 $attachFileDone = __DIR__ . '/' . $dir . "/done/" . $file;
